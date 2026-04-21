@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+/* 🔥 Carousel Arrow Styling */
+.alice-carousel__prev-btn,
+.alice-carousel__next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alice-carousel__prev-btn {
+  left: 10px;
+}
+
+.alice-carousel__next-btn {
+  right: 10px;
+}
