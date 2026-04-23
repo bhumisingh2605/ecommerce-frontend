@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal, Box, Typography } from "@mui/material";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import API from "../../api"; // ✅ ADD THIS
+import API from "../../api";
 
 const style = {
   position: "absolute",
@@ -40,13 +40,10 @@ const AuthModal = ({ open, handleClose }) => {
     }
 
     try {
-      const res = await axios.post(
-        `${API}/api/v1/auth/signin`, // ✅ FIXED
-        {
-          email: form.email,
-          password: form.password,
-        }
-      );
+      const res = await axios.post(`${API}/api/v1/auth/signin`, {
+        email: form.email,
+        password: form.password,
+      });
 
       localStorage.setItem("jwt", res.data.jwt);
 
@@ -71,15 +68,13 @@ const AuthModal = ({ open, handleClose }) => {
     }
 
     try {
-      const res = await axios.post(
-        `${API}/api/v1/auth/signup`, // ✅ FIXED
-        {
-          email: form.email,
-          password: form.password,
-          firstName: form.name,
-          lastName: "User",
-        }
-      );
+      // ✅ FIXED: removed unused 'res'
+      await axios.post(`${API}/api/v1/auth/signup`, {
+        email: form.email,
+        password: form.password,
+        firstName: form.name,
+        lastName: "User",
+      });
 
       alert("Registered successfully! Now login.");
       setIsLogin(true);
